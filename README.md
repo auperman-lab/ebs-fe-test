@@ -88,11 +88,11 @@ We will assess your work based on:
 - [x] Clone the project.
 - [x] Install the dependencies using `npm install`.
 - [x] Start the development server using `npm run dev`.
-- [ ] Create the base layout for the application (header, footer, main content).
+- [x] Create the base layout for the application (header, footer, main content).
 - [x] Set up React Router for navigation between pages. (`npm install react-router-dom`)
 - [ ] Create a global context for managing the shopping cart state.
 - [x] Implement basic routing for the Home Page and Shopping Cart Page. (`/`, `/cart`)
-- [ ] Add basic styling to the application using CSS or a CSS framework. 
+- [x] Add basic styling to the application using CSS or a CSS framework. 
 
 ### Create the Home Page:
 - [ ] Create a table or grid of cards to display the list of products.
