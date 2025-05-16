@@ -1,4 +1,4 @@
-import {IProduct} from "../api/products.tsx";
+import {IProduct} from "../../api/products.tsx";
 
 const Product: React.FC<IProduct> = (product) => {
   return (
