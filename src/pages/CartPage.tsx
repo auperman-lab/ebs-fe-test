@@ -35,7 +35,8 @@ const CartPage = () => {
 
           <button
             onClick={() => handleClearCart()}
-            className={"border border-green-800 p-4 text-green-800 hover:text-green-600 hover:border-green-600"}
+            className={`border border-green-800 p-4 text-green-800 hover:text-green-600 hover:border-green-600
+            ${cart.items.length === 0 ? "hidden": ""} `}
           >
             Clear Cart
           </button>
