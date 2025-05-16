@@ -100,7 +100,7 @@ We will assess your work based on:
 - [x] Display the product details (image, name, price, category).
 - [ ] Add a button to add the product to the shopping cart.
 - [ ] Add a button to remove the product from the shopping cart.
-- [ ] Implement filtering by category and sorting by price (asc/desc).
+- [x] Implement filtering by category and sorting by price (asc/desc).
 ### Create the Shopping Cart Page:
 - [ ] Display the list of products added to the shopping cart.
 - [ ] Allow users to change the quantity of products in the cart.

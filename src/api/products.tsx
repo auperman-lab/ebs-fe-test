@@ -11,8 +11,23 @@ export interface IProduct{
   }
 }
 
+const api = `https://fakestoreapi.com`;
+
 export async function fetchProducts(): Promise<IProduct[]> {
-  const res = await fetch(`https://fakestoreapi.com/products`);
+  const res = await fetch(api + `/products`);
   if (!res.ok) throw new Error("Failed to fetch products");
+  return res.json();
+}
+
+
+export async function fetchProductsByCategory(category: string): Promise<IProduct[]> {
+  const res = await fetch(api + `/products/category/` + category);
+  if (!res.ok) throw new Error("Failed to fetch products by category");
+  return res.json();
+}
+
+export async function fetchCategories(): Promise<string[]> {
+  const res = await fetch(api + `/categories` );
+  if (!res.ok) throw new Error("Failed to fetch products by category");
   return res.json();
 }
