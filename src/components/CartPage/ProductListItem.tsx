@@ -30,10 +30,13 @@ const ProductListItem:React.FC<IProduct> = (product) =>{
         <div className={"gap-2"}>
           <h3 className="text-lg font-semibold">{product.title}</h3>
           <p className="text-green-700 font-medium">{product.price} MDL</p>
-          <h2 className="text-sm ">{product.description}</h2>
+          <h2 className="text-sm hidden sm:block">{product.description}</h2>
         </div>
+        <p className="text-sm font-sm"><b>Total</b>: {product.price * quantity} MDL</p>
 
-        <div className="flex items-center max-w-30 justify-between gap-2 mt-2  border border-green-800 text-green-800 hover:border-green-600">
+
+        <div
+          className="flex items-center max-w-30 justify-between gap-2 mt-2  border border-green-800 text-green-800 hover:border-green-600">
           <button
             onClick={() => (handleQuantityButton("REMOVE_ITEM"))}
             className="px-2 py-1 "

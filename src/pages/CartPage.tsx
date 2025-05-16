@@ -1,15 +1,15 @@
 import {useCartContext} from "../context/CartContext.tsx";
 import {IProduct} from "../api/products.tsx";
 import ProductListItem from "../components/CartPage/ProductListItem.tsx";
+import CartInfo from "../components/CartPage/CartInfo.tsx";
 
 const CartPage = () => {
 
-  const { cart } = useCartContext();
+  const { cart, dispatch } = useCartContext();
 
-
-
-  const totalPrice = cart.items.reduce((acc, item) => acc + item.price, 0);
-
+  const handleClearCart = () =>{
+    dispatch({type: "CLEAR_CART"});
+  }
 
   return (
     <div className="mt-20 px-8 flex flex-col md:flex-row gap-8 justify-between">
@@ -29,15 +29,18 @@ const CartPage = () => {
       </aside>
 
       {/* Right - Total */}
-      <aside className="w-full md:w-64 bg-white p-6 rounded shadow h-fit">
-        <h2 className="text-xl font-bold mb-2">Total</h2>
-        <p className="text-green-700 text-lg font-semibold">{totalPrice.toFixed(2)} MDL</p>
-        <button
-          className="mt-4 w-full bg-green-700 text-white py-2 rounded hover:bg-green-800"
-          disabled={cart.items.length === 0}
-        >
-          Checkout
-        </button>
+      <aside className="w-full max-w-100 sticky top-24 self-start">
+        <div className={"flex flex-col justify-between md:h-[80vh]"}>
+          <CartInfo/>
+
+          <button
+            onClick={() => handleClearCart()}
+            className={"border border-green-800 p-4 text-green-800 hover:text-green-600 hover:border-green-600"}
+          >
+            Clear Cart
+          </button>
+
+        </div>
       </aside>
     </div>
   );
