@@ -90,7 +90,7 @@ We will assess your work based on:
 - [x] Start the development server using `npm run dev`.
 - [x] Create the base layout for the application (header, footer, main content).
 - [x] Set up React Router for navigation between pages. (`npm install react-router-dom`)
-- [ ] Create a global context for managing the shopping cart state.
+- [x] Create a global context for managing the shopping cart state.
 - [x] Implement basic routing for the Home Page and Shopping Cart Page. (`/`, `/cart`)
 - [x] Add basic styling to the application using CSS or a CSS framework. 
 
@@ -98,14 +98,14 @@ We will assess your work based on:
 - [x] Create a table or grid of cards to display the list of products.
 - [x] Fetch the product data from the API (https://fakestoreapi.com/products).
 - [x] Display the product details (image, name, price, category).
-- [ ] Add a button to add the product to the shopping cart.
-- [ ] Add a button to remove the product from the shopping cart.
+- [x] Add a button to add the product to the shopping cart.
+- [x] Add a button to remove the product from the shopping cart.
 - [x] Implement filtering by category and sorting by price (asc/desc).
 ### Create the Shopping Cart Page:
-- [ ] Display the list of products added to the shopping cart.
-- [ ] Allow users to change the quantity of products in the cart.
-- [ ] Allow users to remove products from the cart.
-- [ ] Show the total price for all products in the cart.
+- [x] Display the list of products added to the shopping cart.
+- [x] Allow users to change the quantity of products in the cart.
+- [x] Allow users to remove products from the cart.
+- [x] Show the total price for all products in the cart.
 - [ ] Add a button to clear all products from the cart.
 
 ### Bonus:

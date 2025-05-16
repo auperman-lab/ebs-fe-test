@@ -17,7 +17,7 @@ const Product: React.FC<IProduct> = (product) => {
   };
 
   return (
-    <div key={product.id} className="bg-gray-100 rounded-xl shadow hover:shadow-md transition">
+    <div className="bg-gray-100 rounded-xl shadow hover:shadow-md transition">
       <div className="w-100 h-100 items-center">
         <img src={product.image} alt={product.title} className="rounded-t-xl  h-[100%] object-cover"/>
       </div>

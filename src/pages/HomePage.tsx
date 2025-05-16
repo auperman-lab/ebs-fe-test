@@ -1,6 +1,6 @@
 import {IProduct, fetchProducts, fetchCategories, fetchProductsByCategory} from "../api/products.tsx";
 import {useEffect, useState} from "react";
-import {Product, SortButton, FilterDrawer} from "../components/Home";
+import {Product, SortButton, FilterDrawer} from "../components/HomePage";
 import { useSearchParams } from "react-router-dom";
 import { SortKey } from "../utils/sortOptions";
 import {IoCloseOutline, IoFilterOutline} from "react-icons/io5";
