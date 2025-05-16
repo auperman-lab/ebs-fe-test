@@ -62,7 +62,7 @@ const HomePage = () => {
     <div className="bg-white px-6 py-10">
       <h2 className="text-2xl font-semibold mb-6">{type ??"All Products"}</h2>
 
-      <div className="flex flex-wrap justify-between items-center mb-6">
+      <section className="flex flex-wrap justify-between items-center mb-6">
         <SortButton/>
 
         <div
@@ -76,13 +76,13 @@ const HomePage = () => {
             <IoFilterOutline className="w-5 h-5"/>
           )}
         </div>
-      </div>
+      </section>
 
-      <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+      <section className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {products.map((product: IProduct) => (
           <Product key={product.id} {...product} />
         ))}
-      </div>
+      </section>
 
       <FilterDrawer
         isOpen={filterOpen}

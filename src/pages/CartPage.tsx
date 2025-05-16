@@ -14,7 +14,7 @@ const CartPage = () => {
   return (
     <div className="mt-20 px-8 flex flex-col md:flex-row gap-8 justify-between">
       {/* Left - Product List */}
-      <div className="flex-1 max-w-120">
+      <aside className="flex-1 max-w-120">
         <h2 className="text-2xl font-bold mb-4">Your Cart</h2>
 
         {cart.items.length === 0 ? (
@@ -26,10 +26,10 @@ const CartPage = () => {
             ))}
           </ul>
         )}
-      </div>
+      </aside>
 
       {/* Right - Total */}
-      <div className="w-full md:w-64 bg-white p-6 rounded shadow h-fit">
+      <aside className="w-full md:w-64 bg-white p-6 rounded shadow h-fit">
         <h2 className="text-xl font-bold mb-2">Total</h2>
         <p className="text-green-700 text-lg font-semibold">{totalPrice.toFixed(2)} MDL</p>
         <button
@@ -38,7 +38,7 @@ const CartPage = () => {
         >
           Checkout
         </button>
-      </div>
+      </aside>
     </div>
   );
 }
