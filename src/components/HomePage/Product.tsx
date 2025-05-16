@@ -17,16 +17,23 @@ const Product: React.FC<IProduct> = (product) => {
   };
 
   return (
-    <div className="bg-gray-100 rounded-xl shadow hover:shadow-md transition">
-      <div className="w-100 h-100 items-center">
-        <img src={product.image} alt={product.title} className="rounded-t-xl  h-[100%] object-cover"/>
+    <div className="bg-gray-100 rounded-xl shadow hover:shadow-md transition overflow-hidden flex flex-col">
+      <div className="w-full h-64 flex items-center justify-center bg-white">
+        <img
+          src={product.image}
+          alt={product.title}
+          className="h-full object-contain"
+        />
       </div>
-      <div className="p-4">
-        <h3 className="text-lg font-medium">{product.title}</h3>
-        <p className="text-green-700 font-semibold">{product.price}MDL</p>
+      <div className="p-4 flex flex-col flex-grow justify-between min-h-[120px]">
+        <div>
+          <h3 className="text-lg font-medium">{product.title}</h3>
+          <p className="text-green-700 font-semibold">{product.price}MDL</p>
+        </div>
+
         <button
           onClick={handleClick}
-          className={`mt-2 text-white px-4 py-1 rounded 
+          className={`mt-4 text-white px-4 py-1 rounded max-w-50
           ${isInCart ? "bg-red-600 hover:bg-red-700" : "bg-green-700 hover:bg-green-800"}`}
         >
           {isInCart ? "Remove from Cart" : "Add to Cart"}

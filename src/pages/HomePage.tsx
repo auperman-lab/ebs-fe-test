@@ -4,12 +4,16 @@ import {Product, SortButton, FilterDrawer} from "../components/HomePage";
 import { useSearchParams } from "react-router-dom";
 import { SortKey } from "../utils/sortOptions";
 import {IoCloseOutline, IoFilterOutline} from "react-icons/io5";
+import ProductSkeleton from "../components/HomePage/ProductSkeleton.tsx";
+import { VscDebugRestart } from "react-icons/vsc";
+
 
 const HomePage = () => {
   const [products, setProducts] = useState<IProduct[]>([]);
   const [categories, setCategories] = useState<string[]>([]);
 
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   const [filterOpen, setFilterOpen] = useState(false);
 
   const [searchParams] = useSearchParams();
@@ -26,7 +30,7 @@ const HomePage = () => {
         const sorted = handleSort(data);
         setProducts(sorted);
       })
-      .catch((err) => console.error(err))
+      .catch(() =>setError("Failed to load products. Please try again later."))
       .finally(() => setLoading(false));
   }, [type, sort]);
 
@@ -56,9 +60,21 @@ const HomePage = () => {
   }
 
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) {
+    return (
+      <div className="bg-white px-6 py-10">
+        <h2 className="text-2xl font-semibold mb-6">{type ?? "All Products"}</h2>
 
+        <section className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+          {Array.from({ length: 12 }).map((_, i) => (
+            <ProductSkeleton key={i} />
+          ))}
+        </section>
+      </div>
+    );
+  }
   return (
+
     <div className="bg-white px-6 py-10">
       <h2 className="text-2xl font-semibold mb-6">{type ??"All Products"}</h2>
 
@@ -79,6 +95,22 @@ const HomePage = () => {
       </section>
 
       <section className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+        {error && (
+          <div className={"col-span-4"}>
+            <div className="text-red-600 bg-red-100 border border-red-300 px-4 py-2 rounded mb-4">
+              {error}
+            </div>
+            <div className="absolute inset-0 flex items-center justify-center z-50">
+              <button
+                onClick={() => window.location.reload()}
+                className="w-20 h-20 bg-green-700 text-white rounded-full shadow hover:bg-green-800 transition flex items-center justify-center"
+              >
+                <VscDebugRestart className="w-10 h-10"/>
+              </button>
+            </div>
+          </div>
+
+        )}
         {products.map((product: IProduct) => (
           <Product key={product.id} {...product} />
         ))}

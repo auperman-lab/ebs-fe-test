@@ -21,11 +21,13 @@ const ProductListItem:React.FC<IProduct> = (product) =>{
     <li
       className="flex items-center justify-between gap-4 p-4 rounded"
     >
-      <img
-        src={product.image}
-        alt={product.title}
-        className="h-50 w-50 object-contain"
-      />
+      <div className="flex-shrink-0 w-40 h-40 rounded overflow-hidden flex items-center justify-center">
+        <img
+          src={product.image}
+          alt={product.title}
+          className="w-full h-full object-contain"
+        />
+      </div>
       <div className="flex flex-col  gap-4">
         <div className={"gap-2"}>
           <h3 className="text-lg font-semibold">{product.title}</h3>

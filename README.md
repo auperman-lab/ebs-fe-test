@@ -37,12 +37,14 @@ You will create a simple **Product Catalog** application where users can browse 
 ### Bonus Points
 The bonus points are **optional** features that you can implement to enhance the application and showcase your skills. You can choose one or more of the following:
 - **Responsive Design**: Make the application responsive for different screen sizes(mobile size it's enough). (tip: use media queries).
+- - **Accessibility**: Ensure the application is accessible and follows best practices for web accessibility. (tip: use semantic HTML elements).
+- - **Creativity**: Feel free to add your own creative touch or features to the application.
+- - **Loading State**: Add loading indicators or skeleton screens to improve the user experience. (tip: use loading state for API requests).
 - **Error Handling**: Implement error handling for API requests and user interactions. (tip: show error messages to users).
-- **Loading State**: Add loading indicators or skeleton screens to improve the user experience. (tip: use loading state for API requests).
-- **Accessibility**: Ensure the application is accessible and follows best practices for web accessibility. (tip: use semantic HTML elements).
+
+
 - **Additional Features**: Add any additional features or enhancements you think would improve the application. (tip: product details modal/page, search functionality).
 - **Documentation**: Provide a README with clear instructions on how to run the application and a brief description of your approach and any important decisions made.
-- **Creativity**: Feel free to add your own creative touch or features to the application.
 
 ### Super Bonus Points
 If you want to go the extra mile, you can also:
