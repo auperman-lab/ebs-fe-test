@@ -1,15 +1,28 @@
 import { IoCloseOutline } from "react-icons/io5";
+import {useSearchParams} from "react-router-dom";
 
 interface FilterDrawerProps {
   isOpen: boolean;
   onClose: () => void;
-  selectedCategory?: string;
-  onSelectCategory?: (category: string) => void;
+  categories: string[];
 }
 
-const categories = ["Electronics", "Books", "Clothing", "Furniture", "All"];
 
-const FilterDrawer = ({ isOpen, onClose, selectedCategory, onSelectCategory }: FilterDrawerProps) => {
+const FilterDrawer = ({ isOpen, onClose, categories }: FilterDrawerProps) => {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const selectedCategory = searchParams.get("type")? searchParams.get("type"): "all" ;
+
+  const handleFilterSelect = (option: string) => {
+    searchParams.set("type", option);
+
+    if (option === "all") {
+      searchParams.delete("type");
+    } else {
+      searchParams.set("type", option);
+    }
+    setSearchParams(searchParams);
+  };
+
   return (
     <>
       {isOpen && (
@@ -39,7 +52,7 @@ const FilterDrawer = ({ isOpen, onClose, selectedCategory, onSelectCategory }: F
               {categories.map((category) => (
                 <li
                   key={category}
-                  onClick={() => onSelectCategory && onSelectCategory(category)}
+                  onClick={() => handleFilterSelect(category)}
                   className={`cursor-pointer py-1 px-2 rounded hover:bg-gray-100 ${
                     selectedCategory === category ? "bg-gray-200 font-semibold" : ""
                   }`}
@@ -54,7 +67,7 @@ const FilterDrawer = ({ isOpen, onClose, selectedCategory, onSelectCategory }: F
         <div className="p-4">
           <button
             className="w-full py-2 border-2 border-green-600 rounded text-green-800 font-semibold hover:bg-green-100 transition"
-            onClick={() => onSelectCategory && onSelectCategory("All")}
+            onClick={() => handleFilterSelect("all")}
           >
             Clear
           </button>

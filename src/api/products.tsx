@@ -27,7 +27,7 @@ export async function fetchProductsByCategory(category: string): Promise<IProduc
 }
 
 export async function fetchCategories(): Promise<string[]> {
-  const res = await fetch(api + `/categories` );
+  const res = await fetch(api + `/products/categories` );
   if (!res.ok) throw new Error("Failed to fetch products by category");
   return res.json();
 }

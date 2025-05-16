@@ -1,4 +1,4 @@
-import {IProduct, fetchProducts} from "../api/products.tsx";
+import {IProduct, fetchProducts, fetchCategories, fetchProductsByCategory} from "../api/products.tsx";
 import {useEffect, useState} from "react";
 import {Product, SortButton, FilterDrawer} from "../components/Home";
 import { useSearchParams } from "react-router-dom";
@@ -7,24 +7,37 @@ import {IoCloseOutline, IoFilterOutline} from "react-icons/io5";
 
 const HomePage = () => {
   const [products, setProducts] = useState<IProduct[]>([]);
+  const [categories, setCategories] = useState<string[]>([]);
+
   const [loading, setLoading] = useState(true);
   const [filterOpen, setFilterOpen] = useState(false);
-  const [selectedCategory, setSelectedCategory] = useState<string | undefined>();
-
 
   const [searchParams] = useSearchParams();
   const sort = (searchParams.get("sort") as SortKey) ?? "ascending";
+  const type = searchParams.get("type");
 
 
   useEffect(() => {
-    fetchProducts()
-      .then(data => {
-        const sorted = handleSort(data)
+    setLoading(true);
+    const fetch = type ? fetchProductsByCategory(type) : fetchProducts();
+
+    fetch
+      .then((data) => {
+        const sorted = handleSort(data);
         setProducts(sorted);
       })
-      .catch(err => console.error(err))
+      .catch((err) => console.error(err))
       .finally(() => setLoading(false));
-  }, [sort]);
+  }, [type, sort]);
+
+  useEffect(() => {
+    fetchCategories()
+      .then(data =>{
+        setCategories(data)
+      })
+      .catch(err => console.error(err))
+  }, []);
+
 
   const handleSort = (data: IProduct[]) =>{
     const sorted = [...data];
@@ -47,7 +60,7 @@ const HomePage = () => {
 
   return (
     <div className="bg-white px-6 py-10">
-      <h2 className="text-2xl font-semibold mb-6">All Products</h2>
+      <h2 className="text-2xl font-semibold mb-6">{type ??"All Products"}</h2>
 
       <div className="flex flex-wrap justify-between items-center mb-6">
         <SortButton/>
@@ -74,8 +87,7 @@ const HomePage = () => {
       <FilterDrawer
         isOpen={filterOpen}
         onClose={() => setFilterOpen(false)}
-        selectedCategory={selectedCategory}
-        onSelectCategory={(cat) => setSelectedCategory(cat)}
+        categories={categories}
       />
     </div>
   );
