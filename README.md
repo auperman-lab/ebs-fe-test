@@ -2,6 +2,8 @@
 
 This practical test is designed to evaluate your ability to build a functional React.js application using TypeScript. Through this task, we aim to understand your technical skills, approach to problem-solving, and familiarity with front-end development tools and practices.
 
+Link to the [website](https://auperman-lab.github.io/ebs-fe-test/)
+
 ## Your Task: Build a Product Catalog Application
 You will create a simple **Product Catalog** application where users can browse products, add items to shopping cart, filter items by category and sort items by price. This project will showcase your ability to:
 - Initialize a React project and set up a development environment.
