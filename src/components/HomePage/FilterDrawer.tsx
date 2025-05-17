@@ -27,9 +27,9 @@ const FilterDrawer = ({ isOpen, onClose, categories }: FilterDrawerProps) => {
     <>
       {isOpen && (
         <div
+          data-testid="overlay"
           className="fixed inset-0  z-40"
           style={{ backgroundColor: 'rgba(0, 0, 0, 0.4)' }} // semi-transparent green
-
           onClick={onClose}
         />
       )}
