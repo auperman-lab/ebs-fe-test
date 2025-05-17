@@ -25,6 +25,28 @@ const Product: React.FC<IProduct> = (product) => {
           className="h-full object-contain"
         />
       </div>
+      <div className="flex items-center justify-start mt-2 mx-4">
+        {Array.from({length: 5}, (_, i) => (
+          <svg
+            key={i}
+            xmlns="http://www.w3.org/2000/svg"
+            fill={i < Math.round(product.rating.rate) ? "#065f46" : "#e5e7eb"}
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            className="w-5 h-5"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={1}
+              d="M12 17.27L18.18 21l-1.63-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.45 4.73L5.82 21z"
+            />
+          </svg>
+        ))}
+        <span className="ml-2 text-sm text-gray-500">
+    ({product.rating.count})
+  </span>
+      </div>
       <div className="p-4 flex flex-col flex-grow justify-between min-h-[120px]">
         <div>
           <h3 className="text-lg font-medium">{product.title}</h3>
