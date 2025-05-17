@@ -42,7 +42,6 @@ The bonus points are **optional** features that you can implement to enhance the
 - - **Loading State**: Add loading indicators or skeleton screens to improve the user experience. (tip: use loading state for API requests).
 - **Error Handling**: Implement error handling for API requests and user interactions. (tip: show error messages to users).
 
-
 - **Additional Features**: Add any additional features or enhancements you think would improve the application. (tip: product details modal/page, search functionality).
 - **Documentation**: Provide a README with clear instructions on how to run the application and a brief description of your approach and any important decisions made.
 

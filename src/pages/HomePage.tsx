@@ -6,6 +6,7 @@ import { SortKey } from "../utils/sortOptions";
 import {IoCloseOutline, IoFilterOutline} from "react-icons/io5";
 import ProductSkeleton from "../components/HomePage/ProductSkeleton.tsx";
 import { VscDebugRestart } from "react-icons/vsc";
+import SearchProducts from "../components/HomePage/SearchProducts.tsx";
 
 
 const HomePage = () => {
@@ -15,10 +16,12 @@ const HomePage = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [filterOpen, setFilterOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
 
   const [searchParams] = useSearchParams();
   const sort = (searchParams.get("sort") as SortKey) ?? "ascending";
   const type = searchParams.get("type");
+  const search = searchParams.get("search");
 
 
   useEffect(() => {
@@ -28,11 +31,16 @@ const HomePage = () => {
     fetch
       .then((data) => {
         const sorted = handleSort(data);
-        setProducts(sorted);
+        const filtered = search
+          ? sorted.filter((product) =>
+            product.title.toLowerCase().includes(search)
+          )
+          : sorted;
+        setProducts(filtered);
       })
       .catch(() =>setError("Failed to load products. Please try again later."))
       .finally(() => setLoading(false));
-  }, [type, sort]);
+  }, [type, sort, search]);
 
   useEffect(() => {
     fetchCategories()
@@ -75,22 +83,25 @@ const HomePage = () => {
   }
   return (
 
+
     <div className="bg-white px-6 py-10">
       <h2 className="text-2xl font-semibold mb-6">{type ??"All Products"}</h2>
 
       <section className="flex flex-wrap justify-between items-center mb-6">
         <SortButton/>
-
-        <div
-          onClick={() => setFilterOpen(!filterOpen)}
-          className="flex items-center space-x-2 text-gray-700 hover:text-black cursor-pointer transition-colors"
-        >
-          <span>Filter</span>
-          {filterOpen ? (
-            <IoCloseOutline className="w-6 h-6"/>
-          ) : (
-            <IoFilterOutline className="w-5 h-5"/>
-          )}
+        <div className="flex items-center justify-center gap-4">
+          <SearchProducts isOpen={searchOpen} toggle={()=>{setSearchOpen(!searchOpen)}} />
+          <div
+            onClick={() => setFilterOpen(!filterOpen)}
+            className="flex items-center space-x-2 text-gray-700 hover:text-black cursor-pointer transition-colors"
+          >
+            <span>Filter</span>
+            {filterOpen ? (
+              <IoCloseOutline className="w-6 h-6"/>
+            ) : (
+              <IoFilterOutline className="w-5 h-5"/>
+            )}
+          </div>
         </div>
       </section>
 
@@ -110,6 +121,11 @@ const HomePage = () => {
             </div>
           </div>
 
+        )}
+        {products.length === 0 && (
+          <div className="text-center text-gray-500 mt-8 col-span-4">
+            No products found matching your search.
+          </div>
         )}
         {products.map((product: IProduct) => (
           <Product key={product.id} {...product} />

@@ -9,10 +9,9 @@ const Header = () => {
   const {cart} = useCartContext();
   return (
     <header className="bg-green-800 flex items-center justify-between px-6 py-4 fixed top-0 left-0 right-0 z-10 shadow h-16">
-      <NavLink to="/">
+      <a href="https://maps.app.goo.gl/iJJXSVGFx4wB57aE6" target="_blank">
         <img src={logo} alt="Logo" className="h-16 w-auto"/>
-      </NavLink>
-
+      </a>
       <nav className=" flex flex-row space-x-4">
         <NavLink to="/" className={"text-white"}>
           <FaHome className="h-6 w-6" />
